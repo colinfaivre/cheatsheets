@@ -67,3 +67,8 @@ $ docker container start -ai myubuntu
 # Execute bash in a running container
 $ docker container exec -it myubuntu bash
 ```
+## Networks
+```bash
+# List port mappings for the container
+$ docker container port myubuntu
+```
