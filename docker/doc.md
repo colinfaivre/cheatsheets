@@ -20,12 +20,12 @@ $ docker          #show commands
 # Show container command help
 $ docker container --help
 # Download nginx image, start a container from it
-# Bind local 80 port to container 80 port
-$ docker container run --publish 80:80 nginx
-# Add --detach to run the command on the background
-$ docker container run --publish 80:80 --detach nginx
+# Bind local 80 port to container 80 port with --publish or -p
+$ docker container run -p 80:80 nginx
+# Add --detach or -d to run the command on the background
+$ docker container run -p 80:80 -d nginx
 # Give a specific name to the container
-$ docker container run --publish 80:80 --detach --name newname nginx
+$ docker container run -p 80:80 -d --name newname nginx
 # Show log from that named container
 $ docker container logs newname
 
