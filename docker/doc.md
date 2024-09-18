@@ -47,3 +47,23 @@ $ docker container rm -f <container_ID>
 - Creates a new container based on that image and prepares to start
 - Gives a virtual IP on private network inside docker engine
 - Starts the container by using CMD in the image Dockerfile
+
+## What is happening inside a container
+```bash
+# List processes inside a container
+$ docker container top
+# Detail one container config
+$ docker container inspect
+# Show performance stats for all containers
+$ docker container stats
+```
+
+## Run a shell inside a container
+```bash
+# Run bash command in a new nginx container
+$ docker container run -it --name mynginx nginx bash
+# Start a stopped container with a shell
+$ docker container start -ai myubuntu
+# Execute bash in a running container
+$ docker container exec -it myubuntu bash
+```
