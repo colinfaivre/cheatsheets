@@ -17,12 +17,33 @@ $ docker          #show commands
 
 ## Basic commands
 ```bash
+# Show container command help
+$ docker container --help
 # Download nginx image, start a container from it
 # Bind local 80 port to container 80 port
 $ docker container run --publish 80:80 nginx
 # Add --detach to run the command on the background
 $ docker container run --publish 80:80 --detach nginx
-# List containers
-$ docker container ls
-```
+# Give a specific name to the container
+$ docker container run --publish 80:80 --detach --name newname nginx
+# Show log from that named container
+$ docker container logs newname
 
+# List running containers
+$ docker container ls
+# List all containers (up and exited)
+$ docker container ls -a
+# Stop a container
+$ docker container stop <container_ID>
+# Remove a container
+$ docker container rm <container_ID>
+# Remove a container even if it is up
+$ docker container rm -f <container_ID>
+```
+## What happens in `docker container run`
+- Looks for the image locally in the image cache
+- Then looks in remote image repo
+- Dowloads the latest version
+- Creates a new container based on that image and prepares to start
+- Gives a virtual IP on private network inside docker engine
+- Starts the container by using CMD in the image Dockerfile
