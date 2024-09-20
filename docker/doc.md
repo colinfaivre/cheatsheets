@@ -84,3 +84,34 @@ $ docker network disconnect`<networkID> <containerID>
 # Create a container attached to a specific network
 $ docker container run -d --name new_nginx --network test_network nginx
 ```
+
+## Images
+```bash
+# Get image history
+$ docker image history <image_repo>
+# Get meta data about an image
+$ docker image inspect <image_repo>
+# Give a new tag to an image
+$ docker image tag <current_tag> <new_tag>
+# Push a user tagged image to dockerhub
+$ docker image push dockerhub_user_name/nginx
+```
+## Building images: Dockerfile
+
+```Dockerfile
+# Image uppon which this image is layered
+FROM debian:jessie
+# Optional env variable that will be used below
+ENV NGINX_VERSION 1.11.10-1-jessie
+# Optional commands to run at shell inside container at build time
+RUN apt-get update && apt-get install some-package
+# Forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+# Expose these ports on the docker network
+# you still need to use -p or -P to open/forward these ports on host
+EXPOSE 80 443
+# Required: run this command when container is launched
+# only one command
+CMD ["nginx", "-g", "daemon off;"]
+```
