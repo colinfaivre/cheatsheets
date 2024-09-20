@@ -71,4 +71,16 @@ $ docker container exec -it myubuntu bash
 ```bash
 # List port mappings for the container
 $ docker container port myubuntu
+# Show networks
+$ docker network ls
+# Inspect a network
+$ docker network inspect <network_ID>
+# Create a network (use --driver to specify a driver, defaults to 'bridge')
+$ docker network create <new_network_name>
+# Attach a network to container
+$ docker network connect <network_ID> <containerID>
+# Detach a network from container
+$ docker network disconnect`<networkID> <containerID>
+# Create a container attached to a specific network
+$ docker container run -d --name new_nginx --network test_network nginx
 ```
