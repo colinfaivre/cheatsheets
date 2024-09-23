@@ -141,3 +141,10 @@ volumes: # Optional, same as docker volume create
 networks: # Optional, same as docker network create
     
 ```
+
+```bash
+# Setup volumes/neworks and start all containers
+$ docker compose up
+# Stop all containers and remove containers/volumes/networks
+$ docker compose down
+```
