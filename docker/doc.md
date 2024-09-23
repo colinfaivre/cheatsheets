@@ -115,3 +115,29 @@ EXPOSE 80 443
 # only one command
 CMD ["nginx", "-g", "daemon off;"]
 ```
+
+```bash
+# Build from a Dockerfile in the same directory with a tagname
+$ docker image build -t <tag_name> .
+```
+
+## Persistant data: Volumes
+
+## Docker compose
+
+```yaml
+version: '3.1' # If no version is specified, default is 1. Recommand v2 minimum
+
+services: # Containers, same as docker run
+    servicename: # A friendly name, this is also DNS name inside network
+        image: # Optional if you use build
+        command: # Optional, replace the default CMD specified by the image
+        environment: # Optional, same as -e in docker run
+        volumes: # Optional, same as -v in docker run
+    servicename2:
+
+volumes: # Optional, same as docker volume create 
+
+networks: # Optional, same as docker network create
+    
+```
