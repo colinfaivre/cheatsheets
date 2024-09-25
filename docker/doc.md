@@ -145,6 +145,12 @@ networks: # Optional, same as docker network create
 ```bash
 # Setup volumes/neworks and start all containers
 $ docker compose up
-# Stop all containers and remove containers/volumes/networks
+# Stop all containers and remove containers/networks
 $ docker compose down
+# Stop all containers and remove containers/volumes/networks
+$ docker compose down -v
+# Display docker compose running processes
+$ docker compose top
+# Display docker compose running containers
+$ docker compose ps
 ```
