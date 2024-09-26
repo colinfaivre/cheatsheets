@@ -123,6 +123,17 @@ $ docker image build -t <tag_name> .
 
 ## Persistant data: Volumes
 
+```bash
+# List volumes
+$ docker volume ls
+# Inspect a particular volume
+$ docker volume inspect <volume_ID>
+# Start a new container with a `mysql-db` named volume
+$ docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
+# Start a new container with bind mount
+$ docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
+```
+
 ## Docker compose
 
 ```yaml
@@ -153,4 +164,6 @@ $ docker compose down -v
 $ docker compose top
 # Display docker compose running containers
 $ docker compose ps
+# Use watch mode configured in docker-compose file to sync code update while developping
+$ docker compose watch
 ```
