@@ -70,3 +70,12 @@ $ docker service scale <serviceID>
 # Update a service to 3 replicas
 $ docker service update bold_northcutt --replicas 3
 ```
+
+## Production grade compose
+new `deploy:` key in compose files can't do `build:`
+```bash
+# Deploy a stack from a compose file
+$ docker stack deploy -c <compose_file_name> <stack_name>
+# List stacks
+$ docker stack ls
+```
